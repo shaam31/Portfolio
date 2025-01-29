@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaam SR - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const App = () => {
+            const [theme, setTheme] = React.useState('light');
+            const [activeSection, setActiveSection] = React.useState('home');
+
+            const toggleTheme = () => {
+                const newTheme = theme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+                document.documentElement.setAttribute('data-theme', newTheme);
+            };
+
+            return (
+                <div className="app-container">
+                    <nav className="navbar">
+                        <div className="nav-brand">SR</div>
+                        <div className="nav-links">
+                            <a href="#" onClick={() => setActiveSection('home')} className={activeSection === 'home' ? 'active' : ''}>Home</a>
+                            <a href="#" onClick={() => setActiveSection('about')} className={activeSection === 'about' ? 'active' : ''}>About</a>
+                            <a href="#" onClick={() => setActiveSection('projects')} className={activeSection === 'projects' ? 'active' : ''}>Projects</a>
+                            <a href="#" onClick={() => setActiveSection('contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
+                        </div>
+                        <button className="theme-toggle" onClick={toggleTheme}>
+                            <i className={theme === 'light' ? 'fas fa-moon' : 'fas fa-sun'}></i>
+                        </button>
+                    </nav>
+
+                    <main className="main-content">
+                        {activeSection === 'home' && (
+                            <div className="home-container">
+                                <div className="hero-section">
+                                    <h1>Shaam SR</h1>
+                                    <h2>AI & Data Science Student</h2>
+                                    <div className="contact-info">
+                                        <a href="mailto:shaam.sr2023aids@sece.ac.in">
+                                            <i className="fas fa-envelope"></i> Email
+                                        </a>
+                                        <a href="tel:8610272665">
+                                            <i className="fas fa-phone"></i> 8610272665
+                                        </a>
+                                        <a href="https://github.com/shaam31" target="_blank">
+                                            <i className="fab fa-github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeSection === 'about' && (
+                            <div className="about-container">
+                                <h2 className="section-title">About Me</h2>
+                                <div className="about-content">
+                                    <div className="education-section">
+                                        <h3>Education</h3>
+                                        <div className="education-item">
+                                            <h4>B.Tech (AI & DS)</h4>
+                                            <p>Sri Eshwar College of Engineering (2023–2027)</p>
+                                            <p>CGPA: 7.5/10</p>
+                                        </div>
+                                        <div className="education-item">
+                                            <h4>HSC</h4>
+                                            <p>Shree Sarasswathi Vidhyaah Mandheer School (2021–2023)</p>
+                                            <p>Percentage: 73.5%</p>
+                                        </div>
+                                        <div className="education-item">
+                                            <h4>SSLC</h4>
+                                            <p>Shree Sarasswathi Vidhyaah Mandheer School  (2020–2021)</p>
+                                            <p>Percentage: 78%</p>
+                                        </div>
+                                    </div>
+                                    <div className="skills-section">
+                                        <h3>Skills</h3>
+                                        <div className="skills-container">
+                                            <span className="skill-item">C | </span>
+                                            <span className="skill-item">C++ | </span>
+                                            <span className="skill-item">Python | </span>
+                                            <span className="skill-item">HTML | </span>
+                                            <span className="skill-item">CSS | </span>
+                                            <span className="skill-item">Java | </span>
+                                            <span className="skill-item">SQL | </span>
+                                            <span className="skill-item">VS Code | </span>
+                                            <span className="skill-item">Canva | </span>
+                                            <span className="skill-item">GitHub</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeSection === 'projects' && (
+                            <div className="projects-container">
+                                <h2 className="section-title">Projects</h2>
+                                <div className="projects-grid">
+                                    <div className="project-card">
+                                        <div className="project-header">
+                                            <i className="fas fa-vote-yea"></i>
+                                            <h3>Cafeteria Management System</h3>
+                                        </div>
+                                        <p className="project-description">
+                                            A Cafeteria Management System (CMS) is a software application designed to automate and streamline cafeteria operations.
+                                            It helps manage orders, billing, inventory, staff, and customer experience efficiently. 
+                        
+                                        </p>
+                                    </div>
+                                    <div className="project-card">
+                                        <div className="project-header">
+                                            <i className="fas fa-bolt"></i>
+                                            <h3>Educational App for Differently-Abled Children</h3>
+                                        </div>
+                                        <p className="project-description">
+                                            An Educational App for Differently-Abled Children enhances learning accessibility through speech-to-text, text-to-speech,
+                                            sign language support, and gesture navigation.It provides interactive content, adaptive assessments, and AI-powered assistance to support diverse learning needs.
+                                            The app ensures inclusivity using Flutter, Firebase, and AI models, making education engaging for all.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeSection === 'contact' && (
+                            <div className="contact-container">
+                                <h2 className="section-title">Get in Touch</h2>
+                                <div className="contact-content">
+                                    <div className="contact-info">
+                                        <div className="contact-item">
+                                            <i className="fas fa-envelope"></i>
+                                            <h3>Email</h3>
+                                            <a href="mailto:shaam.sr2023aids@sece.ac.in">
+                                                shaam.sr2023aids@sece.ac.in
+                                            </a>
+                                        </div>
+                                        <div className="contact-item">
+                                            <i className="fas fa-phone"></i>
+                                            <h3>Phone</h3>
+                                            <a href="tel:9789504631">8610272665</a>
+                                        </div>
+                                        <div className="contact-item">
+                                            <i className="fab fa-github"></i>
+                                            <h3>GitHub</h3>
+                                            <a href="https://github.com/shaam31" target="_blank">
+                                                github.com/shaam31
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <form className="contact-form">
+                                        <div className="form-group">
+                                            <label htmlFor="name">Name</label>
+                                            <input type="text" id="name" name="name" required />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="email">Email</label>
+                                            <input type="email" id="email" name="email" required />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="message">Message</label>
+                                            <textarea id="message" name="message" required></textarea>
+                                        </div>
+                                        <button type="submit" className="submit-btn">Send Message</button>
+                                    </form>
+                                </div>
+                            </div>
+                        )}
+                    </main>
+
+                    <footer>
+                        <div className="social-links">
+                            <a href="https://github.com/shaam31" target="_blank">
+                                <i className="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:shaam.sr2023aids@sece.ac.in">
+                                <i className="fas fa-envelope"></i>
+                            </a>
+                            <a href="tel:8610272665">
+                                <i className="fas fa-phone"></i>
+                            </a>
+                        </div>
+                        <p>&copy; {new Date().getFullYear()} Shaam SR. All rights reserved.</p>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
